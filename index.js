@@ -16,14 +16,14 @@
 document.querySelector(".container").innerHTML = `
     <header>
         <h1>PUSH-UP <span>CALCULATOR<span></h1>
-        <p>Track your push ups! 💪</p>
+        <p>Track your push-ups! 💪</p>
         <div class="highscores-box">
             <div id="highscore-el"></div>
         </div>
     </header>
 
     <div class="question-box">
-        <h3>What's your pushup target today?</h3>
+        <h3>What's your push-up target today?</h3>
         <input type="number" id="target-el" placeholder="e.g. 80"/>
         <button id="target-btn">Submit Target</button>
     </div>
@@ -38,6 +38,8 @@ document.querySelector(".container").innerHTML = `
         <div id="new-target-el" class="new-target-el"></div>
         <div id="current-total-el" class="current-total-el"></div>
     </div>
+
+    <div id="notification-el" class="note-el"></div>
 
     <div class="reset-box hide">
         <button id="reset-btn">Finish Workout</button>
@@ -87,6 +89,15 @@ document.getElementById("submit-btn").addEventListener("click", () => {
 
   // show highscore
   highscoreEl.innerHTML = `<em>(Current Highscore ⭐️: <span>${getTotalPushupArray}</span>)</em>`;
+
+  if (
+    getTotalPushupArray === highscoreEl ||
+    getTotalPushupArray > highscoreEl
+  ) {
+    document.getElementById("notification-el").innerHTML = `
+    <p>You've hit your 🎯 for today! Well done! 🏆</p>
+    `;
+  }
 });
 
 // reset btn/function
