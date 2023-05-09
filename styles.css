@@ -1,0 +1,105 @@
+.container {
+  margin: 0 auto;
+  max-width: 500px;
+  border: 1px solid red;
+  height: 100vh;
+}
+
+header h1,
+p {
+  text-align: center;
+}
+
+header h1 span {
+  display: block;
+}
+
+/* USER INPUTS */
+.question-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-box input[type="number"] {
+  font-size: 2rem;
+  padding: 2em;
+  text-align: center;
+  width: 30%;
+}
+
+.question-box button {
+  margin-top: 1em;
+  padding: 1em;
+  width: 56%;
+  cursor: pointer;
+}
+
+.user-input-box {
+  margin-top: 2.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-input-box input[type="number"] {
+  margin-top: 0.5em;
+  font-size: 2rem;
+  padding: 2em;
+  text-align: center;
+  width: 30%;
+}
+
+.user-input-box button {
+  margin-top: 1em;
+  padding: 1em;
+  width: 56%;
+  cursor: pointer;
+}
+
+.user-input-box label {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* USER DASHBOARD */
+
+.user-dashboard {
+  display: grid;
+  padding: 2em;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1em;
+}
+
+.current-target-box {
+  border: 1px solid green;
+}
+
+#highscore-el {
+  text-align: center;
+}
+
+#highscore-el span {
+  display: block;
+  font-size: 2rem;
+}
+
+.new-target-el {
+  padding: 1em;
+  text-align: center;
+}
+
+.new-target-el span {
+  display: block;
+  font-size: 3rem;
+}
+
+/* classlists */
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
