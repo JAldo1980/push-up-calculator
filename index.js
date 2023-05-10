@@ -73,7 +73,6 @@ let pushupCount = [];
 
 document.getElementById("submit-btn").addEventListener("click", () => {
   pushupCount.push(Number(userInput.value)); // convert input to number
-  console.log(pushupCount);
   userInput.value = "";
 
   // show current total
@@ -81,26 +80,27 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     return total + currentElement;
   }, 0); // start with a total of 0
 
-  console.log(getTotalPushupArray);
-
   document.getElementById(
     "current-total-el"
   ).innerHTML = `Current total 📈: <span>${getTotalPushupArray}</span>`;
 
-  // show highscore
-  highscoreEl.innerHTML = `<em>(Current Highscore ⭐️: <span>${getTotalPushupArray}</span>)</em>`;
+  //   save highscore
+  localStorage.setItem("highScore", JSON.stringify(getTotalPushupArray));
 
-  if (
-    getTotalPushupArray === highscoreEl ||
-    getTotalPushupArray > highscoreEl
-  ) {
+  //   get highscore
+  let storedScore = JSON.parse(localStorage.getItem("highScore"));
+
+  console.log(storedScore);
+
+  // show highscore
+  highscoreEl.innerHTML = `<em>(Current Highscore ⭐️: <span>${storedScore}</span>)</em>`;
+
+  if (storedScore === targetEl.value || storedScore > targetEl.value) {
     document.getElementById("notification-el").innerHTML = `
     <p>You've hit your 🎯 for today! Well done! 🏆</p>
     `;
   }
 });
-
-// reset btn/function
 
 // reset btn/function
 document.getElementById("reset-btn").addEventListener("click", () => {
@@ -111,9 +111,6 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   document.getElementById("new-target-el").innerHTML = "";
   document.getElementById("current-total-el").innerHTML = "";
 
-  // Clear highscore
-  highscoreEl.innerHTML = "";
-
   // Clear input fields
   targetEl.value = "";
   userInput.value = "";
@@ -122,4 +119,6 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   document.querySelector(".user-input-box").classList.remove("show");
   document.querySelector(".reset-box").classList.remove("show");
   document.querySelector(".question-box").classList.remove("hide");
+
+  document.getElementById("notification-el").innerHTML = ``;
 });
